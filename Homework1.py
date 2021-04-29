@@ -21,12 +21,12 @@ x0_c = 0.5
 x0_d = 3
 
 #L für X-und Y-Achse und die X Achse für Euler's Method
-L_a = 7/h_a + 1
+L_a = 7/h_a + 1 # Anzahl Stützstellen
 L_b = 7/h_b + 1
 L_c = 7/h_c + 1
 L_d = 7/h_d + 1
 
-x_a_euler = np . linspace (0, 7, round(L_a))
+x_a_euler = np.arange(0, 7, h_a) # np . linspace (0, 7, round(L_a))
 x_b_euler = np . linspace (0, 7, round(L_b))
 x_c_euler = np . linspace (0, 7, round(L_c))
 x_d_euler = np . linspace (0, 7, round(L_d))
