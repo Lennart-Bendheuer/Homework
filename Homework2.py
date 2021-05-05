@@ -5,7 +5,7 @@ E1 = 2.0
 E2 = 0.8
 Y1 = 0.02
 Y2 = 0.002
-h = 0.025
+h = 0.025 #Schrittgrösse für Heun
 R = 100
 B = 100
 
@@ -34,7 +34,7 @@ while (I<X.size):
     I = I + 1
 
 #Euler
-h_e=0.025
+h_e=0.025 #Schrittgrösse für euler
 X_e = np.arange(0, 50, h_e)
 P1 = np.arange(0, 50, h_e)
 P1[0] = B
