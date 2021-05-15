@@ -1,18 +1,18 @@
 import numpy as np
 import matplotlib.pyplot as plt
 #Vorgabe:
-Phase1_Start=0
-Phase2_Start=0
-Phase3_Start=0
+Phase1_Start=0.5
+Phase2_Start=1
+Phase3_Start=1.5
 W1=0.19
 W2=0.2
-W3=0.21
+W3=1
 
 Phasen=[Phase1_Start, Phase2_Start, Phase3_Start]
 
 
-t_end = 100
-h=0.1
+t_end = 15
+h=0.001
 time = np.arange(0, t_end, h)
 
 Phase1 = np.arange(0, t_end, h)
@@ -26,9 +26,9 @@ Phase3[0]=Phase3_Start
 
 
 #Adjacency Matrix K
-K= [[0, 50, 50],
-    [50, 0, 50],
-    [50, 50, 0]]
+K= [[0, 50, 10],
+    [50, 0, 10],
+    [10, 10, 0]]
 
 
 for A in range(time.size-1):
