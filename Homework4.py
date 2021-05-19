@@ -9,8 +9,8 @@ N=50
 h=0.001
 Nt=1500
 
-thetas = np.random.uniform(0, 2.*np.pi, size=N)
-Omegas= np.random.standard_cauchy(size=N)
+thetas = np.random.normal(0, 2.*np.pi, size=N)
+Omegas = np.random.random_sample(size=N)
 
 def order_parameters(theta):
     real = np.mean(np.cos(theta))
@@ -20,19 +20,19 @@ def order_parameters(theta):
     return r, psi
 
 def rk4_step(omega, theta, K, h):
-    k1 = rhs(K, omega, theta)
-    k2 = rhs(K, omega, theta + k1 * (h / 2 ))
-    k3 = rhs(K, omega, theta + k2 * (h / 2 ))
-    k4 = rhs(K, omega, theta + k3 * h)
+    k1 = rhs(omega, theta, K)
+    k2 = rhs(omega, theta + k1 * (h / 2 ), K)
+    k3 = rhs(omega, theta + k2 * (h / 2 ), K)
+    k4 = rhs(omega, theta + k3 * h, K)
     theta = theta + (h/6) * (k1 + 2*k2 + 2*k3 + k4)
     return theta
 
-def rhs(K, omega, theta):
+def rhs(omega, theta, K):
     N = len(theta)
     Ergebnis_Thetas = []
     r, psi = order_parameters(thetas)
     for i in range(N):
-        Ergebnis_Thetas.append(omega[i] + K * r * np.sin(psi - theta[i]))
+        Ergebnis_Thetas.append(omega[i] + K * np.sin(psi - theta[i]))
     return np.array(Ergebnis_Thetas)
 
 
@@ -57,11 +57,11 @@ for i in range(Nt):
     plt.draw()
     plt.show(block=False)
 
-    #             dieser Part hier funktioniert bei mir nicht; wo ist mein Fehler?
-    fileName = "video-phases_" + str(i) + ".png"
-    plt.savefig(fileName)
-    #             also der Part bis hier :( Es wird mir nur eine Fehlermeldung angezeigt: FileNotFoundError: [Errno 2] No such file or directory: 'video/phases_0.png'
 
+   # fileName = "video-phases_" + str(i) + ".png"
+   # plt.savefig(fileName)
+
+#diese f Strings funktionieren bei mir nicht, daher nutze ich ImageJ
 
     plt.pause(0.01)
 
