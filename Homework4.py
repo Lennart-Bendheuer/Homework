@@ -32,6 +32,8 @@ def rhs(omega, theta, K):
         Ergebnis_Thetas.append(omega[i] + K * np.sin(psi - theta[i]))
     return np.array(Ergebnis_Thetas)
 
+def time():
+    return str(round(h * i, 3))
 
 
 plt.figure("phases")
@@ -50,7 +52,9 @@ for i in range(Nt):
     plt.plot(xp, yp, "o")
 
     plt.arrow(0, 0, rx, ry, head_width=0.05)
-
+    plt.gca().set_aspect('equal')
+    plt.xlim(-1.5, 1.5)
+    plt.ylim(-1.2, 1.2)
     plt.draw()
     plt.show(block=False)
 
