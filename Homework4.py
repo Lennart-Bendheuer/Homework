@@ -32,8 +32,6 @@ def rhs(omega, theta, K):
         Ergebnis_Thetas.append(omega[i] + K * np.sin(psi - theta[i]))
     return np.array(Ergebnis_Thetas)
 
-def time():
-    return str(round(h * i, 3))
 
 
 plt.figure("phases")
