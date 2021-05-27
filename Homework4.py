@@ -45,8 +45,8 @@ for i in range(Nt):
     circle = np.linspace(0, 2 * np.pi, 100)
     plt.plot(np.sin(circle), np.cos(circle))
 
-    plt.title(str(round(h * i, 3)) + " s")  #Wie verhindere ich es hier, dass sich die Anzahl der Nachkommastellen verändert?
-
+    #plt.title(str(round(h * i, 3)) + " s")  #Wie verhindere ich es hier, dass sich die Anzahl der Nachkommastellen verändert?
+    plt.title(f'{h*i:.3f} s')
     plt.plot(xp, yp, "o")
 
     plt.arrow(0, 0, rx, ry, head_width=0.05)
@@ -57,7 +57,8 @@ for i in range(Nt):
     plt.show(block=False)
 
 
-    fileName = "video-phases_" + str(i) + ".png"
+    #fileName = "video-phases_" + str(i) + ".png"
+    fileName = f'video-phases_{i:07d}.png'
     plt.savefig(fileName)
 
 #diese f Strings funktionieren bei mir nicht, daher nutze ich ImageJ
